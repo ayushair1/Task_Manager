@@ -16,10 +16,16 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
     @ExceptionHandler(TaskNotFoundException.class)
     public ResponseEntity<ErrorMessage> taskNotFoundException(TaskNotFoundException exception,
                                                              WebRequest request){
-        ErrorMessage message = new ErrorMessage(HttpStatus.NOT_FOUND,
-                exception.getMessage());
-        return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                .body(message);
+        ErrorMessage message = new ErrorMessage(HttpStatus.NOT_FOUND, exception.getMessage());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(message);
+
+    }
+
+    @ExceptionHandler(UserAlreadyExist.class)
+    public ResponseEntity<ErrorMessage> UserAlreadyExist(UserAlreadyExist exception,
+                                                              WebRequest request){
+        ErrorMessage message = new ErrorMessage(HttpStatus.NOT_FOUND, exception.getMessage());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(message);
 
     }
 
